@@ -1,0 +1,118 @@
+name: Build LaTeX PDF - Resume
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build-pdf:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Compile Resume (XeLaTeX)
+        uses: xu-cheng/latex-action@v3
+        with:
+          root_file: main.tex
+          latexmk_use_xelatex: true
+          latexmk_shell_escape: true
+          pre_compile: |
+            tlmgr option repository https://mirrors.rit.edu/CTAN/systems/texlive/tlnet
+            tlmgr update --self
+            tlmgr install fontawesome5 fontspec lm babel-english
+
+      - name: Rename Resume PDF
+        run: cp main.pdf Cao_Anh_Huan_Resume.pdf
+
+      - name: List outputs
+        run: ls -la *.pdf
+
+      - name: Upload artifact (PDF)
+        uses: actions/upload-artifact@v4
+        with:
+          name: resume
+          path: Cao_Anh_Huan_Resume.pdf
+
+      - name: Upload logs (always)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: build-logs
+          path: |
+            main.log
+            main.aux
+
+  release:
+    if: github.event_name == 'push'
+    runs-on: ubuntu-latest
+    needs: build-pdf
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Generate changelog from commit history
+        run: |
+          set -euo pipefail
+
+          LAST_TAG=""
+          BUILD_TAGS=$(git tag -l "build-*" 2>/dev/null || true)
+
+          if [ -n "$BUILD_TAGS" ]; then
+            LAST_TAG=$(echo "$BUILD_TAGS" | sed 's/build-//' | sort -n | tail -1 | sed 's/^/build-/')
+            echo "Found last successful build tag: ${LAST_TAG}" >&2
+          else
+            echo "No build tags found, will include all commits" >&2
+          fi
+
+          {
+            echo "## Changelog ($(date -u +"%Y-%m-%d %H:%M:%S") UTC)"
+            echo ""
+
+            if [ -n "$LAST_TAG" ]; then
+              COMMIT_RANGE="${LAST_TAG}..HEAD"
+              COMMITS=$(git log "${COMMIT_RANGE}" --no-merges --oneline 2>/dev/null || true)
+              if [ -n "$COMMITS" ]; then
+                git log "${COMMIT_RANGE}" --no-merges --pretty=format:"*   **%s** (%h)"
+              else
+                echo "- No new commits since ${LAST_TAG}"
+              fi
+            else
+              echo "### All Commits (no previous successful build found)"
+              echo ""
+              git log --no-merges --pretty=format:"*   **%s** (%h)" | head -20
+            fi
+          } > release_notes.md
+
+          if [ ! -s release_notes.md ] || ! grep -q "^\*" release_notes.md; then
+            {
+              echo "## Changelog ($(date -u +"%Y-%m-%d %H:%M:%S") UTC)"
+              echo ""
+              echo "### Recent Changes"
+              echo ""
+              git log -n 10 --no-merges --pretty=format:"*   **%s** (%h)" 2>/dev/null || echo "- No commits found."
+            } > release_notes.md
+          fi
+
+          echo "=== Changelog Preview ==="
+          head -30 release_notes.md
+
+      - name: Download artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: resume
+          path: dist
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: build-${{ github.run_number }}
+          name: Automated Build ${{ github.run_number }}
+          body_path: release_notes.md
+          files: dist/Cao_Anh_Huan_Resume.pdf
