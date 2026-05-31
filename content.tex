@@ -1,6 +1,6 @@
 \section{Summary}
 \begin{onecolentry}
-    Backend Engineer with 2+ years of experience building and maintaining production backend systems across \textbf{e-commerce} and \textbf{fintech/payments} domains. I contribute across the full service lifecycle — from API design and database architecture to performance tuning, observability, security, and CI/CD. Comfortable working across the stack but focused on backend: data consistency, concurrency, and cloud deployment. I care about correctness, measurable performance, and code that scales with the team as well as the traffic.
+    Backend Engineer with 2+ years of experience building and maintaining production backend systems across \textbf{e-commerce} and \textbf{fintech/payments} domains. I contribute across the full service lifecycle - from API design and database architecture to performance tuning, observability, security, and CI/CD. Comfortable working across the stack but focused on backend: data consistency, concurrency, and cloud deployment. I care about correctness, measurable performance, and code that scales with the team as well as the traffic.
 \end{onecolentry}
 
 
@@ -20,11 +20,11 @@
 \end{twocolentry}
 \begin{onecolentry}
     \begin{highlights}
-        \item Integrated \textbf{Meilisearch} to replace full-table SQL queries for product search — enabling full-text, typo-tolerant, and faceted filtering with sub-millisecond response times across the catalog
+        \item Integrated \textbf{Meilisearch} to replace full-table SQL queries for product search - enabling full-text, typo-tolerant, and faceted filtering with sub-millisecond response times across the catalog
         \item Engineered the end-to-end \textbf{checkout and payment flow} with ACID transactions ensuring atomic cart → order → payment state transitions; integrated payment gateway with idempotent request handling so retried or duplicated calls never create duplicate charges
-        \item Implemented \textbf{role-based access control (RBAC)} for the e-commerce admin panel — defining roles (super admin, warehouse manager, warehouse staff) with permission-scoped access to catalog management, order processing, and reporting modules, preventing unauthorized actions across admin functions
+        \item Implemented \textbf{role-based access control (RBAC)} for the e-commerce admin panel - defining roles (super admin, warehouse manager, warehouse staff) with permission-scoped access to catalog management, order processing, and reporting modules, preventing unauthorized actions across admin functions
         \item Modeled core e-commerce domains using \textbf{Domain-Driven Design}; backed order and payment records with optimistic locking to keep state consistent and auditable under concurrent checkout traffic
-        \item Drove an \textbf{AI-augmented engineering workflow} (Claude Code) for automated requirement analysis, architecture review, and code review — increasing review throughput and defect-catch rate while standardizing code quality across the team
+        \item Drove an \textbf{AI-augmented engineering workflow} (Claude Code) for automated requirement analysis, architecture review, and code review - increasing review throughput and defect-catch rate while standardizing code quality across the team
     \end{highlights}
 \end{onecolentry}
 \vspace{0.2 cm}
@@ -37,7 +37,7 @@
 \begin{onecolentry}
     \begin{highlights}
         \item Developed and maintained backend services for an internal real-time chat platform built on \textbf{Laravel}, \textbf{NodeJS}, \textbf{Socket.IO}, and \textbf{Redis}, supporting live messaging across concurrent employees
-        \item Reduced Redis round-trip overhead and eliminated data races by replacing naive per-command calls with \textbf{Redis pipelines} and \textbf{Lua scripts} — batching network round-trips and enforcing atomic read-modify-write sequences to prevent race conditions under concurrent message load
+        \item Reduced Redis round-trip overhead and eliminated data races by replacing naive per-command calls with \textbf{Redis pipelines} and \textbf{Lua scripts} - batching network round-trips and enforcing atomic read-modify-write sequences to prevent race conditions under concurrent message load
         \item Migrated the push-notification pipeline from the deprecated Google HTTP API to \textbf{Firebase Admin SDK}, implementing recipient \textbf{chunking} to respect FCM batch limits and adding retry with exponential back-off to ensure reliable delivery at scale
         \item Engineered a multilingual \textbf{Translate Bot} (Vietnamese - Japanese) integrated into the chat flow, with structured message normalization that preserves formatting, mentions, and context across languages
         \item Hardened the messaging stack for reliability: graceful reconnection and message ordering guarantees handling on the WebSocket layer
@@ -48,8 +48,8 @@
 \section{Engineering Highlights}
 \begin{onecolentry}
     \begin{highlights}
-        \item \textbf{Fintech / payments:} built a real-time transaction aggregator integrating multiple exchange APIs (Binance, OKX, Bybit) with a \textbf{reconciliation engine} (dedupe, normalize, aggregate) computing PnL and cost basis from full transaction history — applying the same payment/ledger patterns used in production systems
-        \item \textbf{Secure auth at scale:} designed a reusable authentication service — JWT with refresh-token rotation, Google OAuth2/OIDC, and encrypted secret storage — used as a drop-in foundation across projects
+        \item \textbf{Fintech / payments:} built a real-time transaction aggregator integrating multiple exchange APIs (Binance, OKX, Bybit) with a \textbf{reconciliation engine} (dedupe, normalize, aggregate) computing PnL and cost basis from full transaction history - applying the same payment/ledger patterns used in production systems
+        \item \textbf{Secure auth at scale:} designed a reusable authentication service - JWT with refresh-token rotation, Google OAuth2/OIDC, and encrypted secret storage - used as a drop-in foundation across projects
         \item \textbf{Concurrency \& performance:} re-engineered data-fetching for concurrent multi-source calls with Redis caching and rate-limit handling, cutting response time and redundant outbound requests
         \item \textbf{Cloud-native ops:} deployed services on AWS (EC2, RDS, ElastiCache) with Dockerized workloads, scheduled jobs, and fully automated CI/CD via GitHub Actions
     \end{highlights}
@@ -73,7 +73,7 @@
 \section{Certifications \& Activities}
 \begin{onecolentry}
     \begin{highlights}
-        \item English — IELTS 6.0 (2020)
-        \item Member, OISP Faculty Football Team — Ho Chi Minh City University of Technology (2020 -- 2023)
+        \item English - IELTS 6.0 (2020)
+        \item Member, OISP Faculty Football Team - Ho Chi Minh City University of Technology (2020 -- 2023)
     \end{highlights}
 \end{onecolentry}
