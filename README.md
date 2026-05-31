@@ -6,7 +6,7 @@
 
 Professional LaTeX-based resume for **Cao Anh Huân — Backend Engineer**, with automated PDF generation via GitHub Actions.
 
-[📥 Download Latest PDF](https://github.com/HThanh-how/CV_Huan/releases/latest)
+[📥 Download Latest PDF](https://github.com/ah2909/CV_Huan/releases/latest)
 
 ---
 
