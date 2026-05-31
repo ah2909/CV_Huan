@@ -1,6 +1,6 @@
 \section{Summary}
 \begin{onecolentry}
-    Backend Engineer with 2+ years of experience designing, building, and operating high-throughput distributed systems for \textbf{fintech/payments} and \textbf{ERP / order-management} domains. I own services end-to-end — from domain modeling, API design, and database architecture to performance tuning, observability, security, and CI/CD. Comfortable working across the stack but deeply specialized in backend: data consistency, concurrency, event-driven architecture, and cloud-native deployment. I care about correctness, measurable performance, and code that scales with the team as well as the traffic.
+    Backend Engineer with 2+ years of experience building and maintaining production backend systems across \textbf{e-commerce} and \textbf{fintech/payments} domains. I contribute across the full service lifecycle — from API design and database architecture to performance tuning, observability, security, and CI/CD. Comfortable working across the stack but focused on backend: data consistency, concurrency, and cloud deployment. I care about correctness, measurable performance, and code that scales with the team as well as the traffic.
 \end{onecolentry}
 
 
@@ -16,17 +16,15 @@
 % --- TMA Solutions (Current) ---
 \begin{twocolentry}{\textit{Jan 2026 -- Present}}
     \textbf{TMA Solutions} \\[4pt]
-    \textit{Backend Engineer — ERP / Warehouse Management}
+    \textit{Backend Engineer — E-Commerce Platform (B2C / B2B)}
 \end{twocolentry}
 \begin{onecolentry}
     \begin{highlights}
-        \item Architected and shipped the \textbf{authorization core} of a multi-warehouse ERP — a fine-grained \textbf{RBAC/ABAC} model enforcing row-level, tenant-isolated access across inventory, stock movements, and accounting data, eliminating an entire class of cross-warehouse data-leak risks
-        \item Modeled core ERP domains using \textbf{Domain-Driven Design}, backing stock and \textbf{ledger entries} with ACID transactions and optimistic locking to keep records auditable, reconcilable, and consistent under concurrent operations
-        \item Designed RESTful service APIs and normalized relational schemas with strict referential integrity; applied partitioning and indexing on high-volume movement tables for predictable query latency as data grows
-        \item Built the \textbf{accounting and reconciliation logic} tying stock movements to financial ledger entries, guaranteeing that physical inventory and book value stay reconciled across every warehouse transfer
-        \item Implemented idempotent write paths and audit trails so that retried or duplicated requests never double-post inventory or financial records
+        \item Integrated \textbf{Meilisearch} to replace full-table SQL queries for product search — enabling full-text, typo-tolerant, and faceted filtering with sub-millisecond response times across the catalog
+        \item Engineered the end-to-end \textbf{checkout and payment flow} with ACID transactions ensuring atomic cart → order → payment state transitions; integrated payment gateway with idempotent request handling so retried or duplicated calls never create duplicate charges
+        \item Implemented \textbf{role-based access control (RBAC)} for the e-commerce admin panel — defining roles (super admin, warehouse manager, warehouse staff) with permission-scoped access to catalog management, order processing, and reporting modules, preventing unauthorized actions across admin functions
+        \item Modeled core e-commerce domains using \textbf{Domain-Driven Design}; backed order and payment records with optimistic locking to keep state consistent and auditable under concurrent checkout traffic
         \item Drove an \textbf{AI-augmented engineering workflow} (Claude Code) for automated requirement analysis, architecture review, and code review — increasing review throughput and defect-catch rate while standardizing code quality across the team
-        \item Collaborated with product and QA to translate ambiguous business rules into precise domain invariants, reducing back-and-forth and rework during delivery
     \end{highlights}
 \end{onecolentry}
 \vspace{0.2 cm}
@@ -34,17 +32,15 @@
 % --- LAMPART ---
 \begin{twocolentry}{\textit{Apr 2024 -- Dec 2025}}
     \textbf{LAMPART Co., Ltd.} \\[4pt]
-    \textit{Backend Engineer — Real-time Messaging Platform}
+    \textit{Fullstack developer — Real-time Messaging Platform}
 \end{twocolentry}
 \begin{onecolentry}
     \begin{highlights}
-        \item Owned backend services for a production real-time chat platform (\textbf{NodeJS}, \textbf{Redis}, WebSockets) serving live, multi-tenant messaging traffic with high-availability requirements
-        \item \textbf{Cut Redis Round-Trip Time and eliminated critical data races} by introducing distributed locking, atomic pipelines, and access-pattern redesign — materially improving message throughput and tail latency under concurrent load
-        \item Re-architected the push-notification pipeline off the deprecated Google HTTP API onto \textbf{Firebase Admin SDK}, adding retry with exponential back-off and delivery guarantees to make notifications reliable at scale
-        \item Engineered a multilingual \textbf{Translate Bot} (Vietnamese--Japanese) integrated into the chat flow, with structured message normalization that preserves formatting, mentions, and context across languages
-        \item Designed and tuned the caching layer (Redis) for hot conversation state, reducing database load and keeping read paths fast during traffic spikes
-        \item Hardened the messaging stack for reliability: graceful reconnection, message ordering guarantees, and back-pressure handling on the WebSocket layer
-        \item Acted as production owner: led incident response, root-cause analysis, and post-mortems, then turned findings into monitoring and code fixes to sustain stability under growth
+        \item Developed and maintained backend services for an internal real-time chat platform built on \textbf{Laravel}, \textbf{NodeJS}, \textbf{Socket.IO}, and \textbf{Redis}, supporting live messaging across concurrent employees
+        \item Reduced Redis round-trip overhead and eliminated data races by replacing naive per-command calls with \textbf{Redis pipelines} and \textbf{Lua scripts} — batching network round-trips and enforcing atomic read-modify-write sequences to prevent race conditions under concurrent message load
+        \item Migrated the push-notification pipeline from the deprecated Google HTTP API to \textbf{Firebase Admin SDK}, implementing recipient \textbf{chunking} to respect FCM batch limits and adding retry with exponential back-off to ensure reliable delivery at scale
+        \item Engineered a multilingual \textbf{Translate Bot} (Vietnamese - Japanese) integrated into the chat flow, with structured message normalization that preserves formatting, mentions, and context across languages
+        \item Hardened the messaging stack for reliability: graceful reconnection and message ordering guarantees handling on the WebSocket layer
     \end{highlights}
 \end{onecolentry}
 
@@ -63,12 +59,11 @@
 \section{Technical Skills}
 \begin{onecolentry}
 \begin{highlights}
-    \item \textbf{Languages:} Go, Java, TypeScript/JavaScript, Python, SQL
-    \item \textbf{Backend:} NodeJS (Express/Nest), Spring Boot, REST, gRPC, GraphQL, WebSockets, microservices, Domain-Driven Design
-    \item \textbf{Domain expertise:} Payments \& fintech (gateway integration, transaction reconciliation, double-entry ledgers, PnL), ERP \& accounting (order-to-cash, inventory, revenue/cost reporting), RBAC/ABAC authorization
-    \item \textbf{Data \& messaging:} MySQL, MariaDB, PostgreSQL, Redis, Kafka/RabbitMQ, event-driven \& CQRS, idempotency, distributed locking, schema design \& indexing
-    \item \textbf{Cloud \& DevOps:} AWS (EC2, RDS, ElastiCache), Docker, Kubernetes, GitHub Actions, CI/CD, Nginx
-    \item \textbf{Observability \& quality:} structured logging, metrics, distributed tracing, automated testing, API documentation (OpenAPI/Swagger)
+    \item \textbf{Languages:} PHP, Go, TypeScript/JavaScript, Python, SQL
+    \item \textbf{Backend:} NodeJS (Express/Nest), Laravel, REST, WebSockets, Domain-Driven Design
+    \item \textbf{Data \& messaging:} MySQL, MariaDB, Redis, idempotency, schema design \& indexing
+    \item \textbf{Cloud \& DevOps:} AWS (EC2, RDS, ElastiCache), Docker, GitHub Actions, CI/CD, Nginx
+    \item \textbf{Observability \& quality:} structured logging, metrics, automated testing, API documentation (OpenAPI/Swagger)
     \item \textbf{Security:} OAuth2/OIDC, JWT, secrets management, rate limiting, input validation, least-privilege access control
     \item \textbf{Frontend (working knowledge):} NextJS, VueJS, React
 \end{highlights}
