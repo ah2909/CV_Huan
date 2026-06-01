@@ -40,6 +40,7 @@
         \item Reduced Redis round-trip overhead and eliminated data races by replacing naive per-command calls with \textbf{Redis pipelines} and \textbf{Lua scripts} - batching network round-trips and enforcing atomic read-modify-write sequences to prevent race conditions under concurrent message load
         \item Migrated the push-notification pipeline from the deprecated Google HTTP API to \textbf{Firebase Admin SDK}, implementing recipient \textbf{chunking} to respect FCM batch limits and adding retry with exponential back-off to ensure reliable delivery at scale
         \item Engineered a multilingual \textbf{Translate Bot} (Vietnamese - Japanese) integrated into the chat flow, with structured message normalization that preserves formatting, mentions, and context across languages
+        \item Proposed a storage architecture improvement to reduce AWS deployment cost — migrating persistent chat data (message history, user records) from Redis to \textbf{MariaDB} while retaining Redis solely for hot session state and real-time pub/sub, reducing memory-heavy ElastiCache usage
         \item Hardened the messaging stack for reliability: graceful reconnection and message ordering guarantees handling on the WebSocket layer
     \end{highlights}
 \end{onecolentry}
