@@ -46,13 +46,25 @@
 \end{onecolentry}
 
 
-\section{Engineering Highlights}
+\section{Projects}
+
+% --- Cryptofolio ---
+\begin{twocolentry}{\textit{\href{https://web.cryptofolio.io.vn}{Live Demo}}}
+    \textbf{Cryptofolio - Crypto Portfolio Tracker} \\[4pt]
+    \textit{Microservices backend \& Next.js frontend} \quad
+    \hrefWithoutArrow{https://landing.cryptofolio.io.vn}{[Landing]} \;
+    \hrefWithoutArrow{https://github.com/ah2909/cryptofolio}{[Backend]} \;
+    \hrefWithoutArrow{https://github.com/ah2909/FM-frontend}{[Frontend]}
+\end{twocolentry}
 \begin{onecolentry}
     \begin{highlights}
-        \item \textbf{Fintech / payments:} built a real-time transaction aggregator integrating multiple exchange APIs (Binance, OKX, Bybit) with a \textbf{reconciliation engine} (dedupe, normalize, aggregate) computing PnL and cost basis from full transaction history - applying the same payment/ledger patterns used in production systems
-        \item \textbf{Secure auth at scale:} designed a reusable authentication service - JWT with refresh-token rotation, Google OAuth2/OIDC, and encrypted secret storage - used as a drop-in foundation across projects
-        \item \textbf{Concurrency \& performance:} re-engineered data-fetching for concurrent multi-source calls with Redis caching and rate-limit handling, cutting response time and redundant outbound requests
-        \item \textbf{Cloud-native ops:} deployed services on AWS (EC2, RDS, ElastiCache) with Dockerized workloads, scheduled jobs, and fully automated CI/CD via GitHub Actions
+        \item Architected a \textbf{microservices backend} on \textbf{Docker Compose} - a \textbf{Laravel 11} core API, a \textbf{Node/Express} auth service, a \textbf{Socket.IO} real-time market feed, and a \textbf{Python/FastAPI} AI analyzer - communicating over Docker networking with per-service configuration
+        \item Built a real-time transaction aggregator integrating multiple exchange APIs (Binance, OKX, Bybit) with a \textbf{reconciliation engine} (dedupe, normalize, aggregate) computing PnL and cost basis from full transaction history
+        \item Designed a dedicated \textbf{authentication service} - JWT with refresh-token rotation, Google OAuth2/OIDC, and encrypted secret storage - decoupled from the core API as a reusable security boundary
+        \item Engineered concurrent multi-source data fetching with \textbf{Redis} caching, cutting response time and redundant outbound requests; streamed live price updates to the frontend over \textbf{WebSockets}
+        \item Shipped an \textbf{AI portfolio analyzer} using FastAPI, \textbf{LangGraph}, and Gemini to generate structured insights over user holdings and market data
+        \item Built the frontend in \textbf{Next.js + TypeScript} with Tailwind CSS, deployed end-to-end with Vercel
+        \item Deployed backend services on AWS (EC2, RDS, ElastiCache) with Dockerized workloads, scheduled jobs, and fully automated CI/CD via GitHub Actions
     \end{highlights}
 \end{onecolentry}
 
@@ -61,7 +73,7 @@
 \begin{onecolentry}
 \begin{highlights}
     \item \textbf{Languages:} PHP, Go, TypeScript/JavaScript, Python, SQL
-    \item \textbf{Backend:} NodeJS (Express/Nest), Laravel, REST, WebSockets, Domain-Driven Design
+    \item \textbf{Backend:} NodeJS (Express/Nest), Laravel, FastAPI, REST, WebSockets, Domain-Driven Design
     \item \textbf{Data \& messaging:} MySQL, MariaDB, Redis, idempotency, schema design \& indexing
     \item \textbf{Cloud \& DevOps:} AWS (EC2, RDS, ElastiCache), Docker, GitHub Actions, CI/CD, Nginx
     \item \textbf{Observability \& quality:} structured logging, metrics, automated testing, API documentation (OpenAPI/Swagger)
