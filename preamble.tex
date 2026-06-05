@@ -74,6 +74,7 @@
 
 \renewcommand\labelitemi{$\circ$} % custom bullet points
 \newenvironment{highlights}{
+    \interlinepenalty=10000  % keep each bullet together; never split an item across pages
     \begin{itemize}[
         topsep=0.10 cm,
         parsep=0.10 cm,
